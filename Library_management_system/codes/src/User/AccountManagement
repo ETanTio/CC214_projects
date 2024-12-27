@@ -1,0 +1,44 @@
+package User;
+
+import SettersAndGetters.Books;
+
+public class AccountManagement {
+    private users user;
+
+    public AccountManagement(users user) {
+        this.user = user;
+    }
+
+    public void viewAccountDetails() {
+        System.out.println("Account Details:");
+        System.out.println("Name: " + user.getName());
+        System.out.println("ID: " + user.getId());
+        System.out.println("Email: " + user.getEmail());
+        System.out.println("Borrowing History:");
+        for (Books book : user.getBorrowedBooks()) {
+            System.out.println("Borrowed: " + book.getTitle());
+        }
+        for (Books book : user.getReturnedBooks()) {
+            System.out.println("Returned: " + book.getTitle());
+        }
+        System.out.println();
+    }
+
+    public void updateAccountInfo(String newEmail, String newPassword) {
+        user.setEmail(newEmail);
+        user.setPass(newPassword);
+        System.out.println("Account information updated!");
+    }
+
+    public void viewBorrowedBooks() {
+        System.out.println("Borrowed Books:");
+        for (Books book : user.getBorrowedBooks()) {
+            System.out.println(book.getTitle());
+        }
+        System.out.println("\nReturned Books:");
+        for (Books book : user.getReturnedBooks()) {
+            System.out.println(book.getTitle());
+        }
+        System.out.println();
+    }
+}
